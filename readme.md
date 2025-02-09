@@ -7,13 +7,12 @@
 - **웹 서버**: WordPress (Apache)
 - **데이터베이스**: MySQL (Primary/Secondary)
 - **Azure 환경 설정**:
-  - 단일 구독 (Subscription)
+  - 단일 Subscription
   - Region: `centralus`
   - Resource Group: `rg-webapp-cus`
 - **배포 방식**: Terraform + Bash 자동화
 - **아키텍처 다이어그램**:
-
-<img src="https://drive.google.com/thumbnail?id=1-UNoJsIItjhkT07dsodmK1jP2baLyzeG&sz=w9000" style="max-width:100%; height:auto; border:1px solid gray;">
+<img src="https://drive.google.com/thumbnail?id=1BQzPkRl9GCLe7ivZLnFOGEnTb5vO5Ha7&sz=w9000" style="max-width:100%; height:auto; border:1px solid gray;">
 
 ## 프로젝트 구조
 ```bash
@@ -22,7 +21,7 @@ azure-webapp-iac
 ├── webapp-scripts/       # 웹 및 DB 서버 설정 자동화 스크립트
 │   ├── db_primary.sh     # Primary DB 서버 설정 스크립트
 │   ├── db_secondary.sh   # Secondary DB 서버 설정 스크립트
-│   ├── web.sh            # 웹 서버(Apache + WordPress) 설정 스크립트
+│   └── web.sh            # 웹 서버(Apache + WordPress) 설정 스크립트
 ├── basics.tf             # Provider, RG 설정
 ├── keyvault.tf           # Azure Key Vault 리소스 및 Secret 설정
 ├── lb.tf                 # Azure Load Balancer 설정
@@ -71,7 +70,7 @@ az role assignment create \
 ## 2. Network 구성
 - **웹 서버 & DB 서버**: 프라이빗 서브넷에 배치 (인터넷 연결 필요 시 NAT Gateway 사용)
 - **NSG(Network Security Group) Rule 설정**
-  - Bastion: 22번 포트 (SSH 접속)
+  - Bastion: 22번 포트 (SSH)
   - Web 서버: 80번 포트 (HTTP)
   - DB 서버: 3306번 포트 (MySQL)
 - **Public Load Balancer (LB)**
